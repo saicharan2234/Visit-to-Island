@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #e0f7fa; 
+            color: #004d40; 
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #009688; 
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            font-family: 'Pacifico', cursive; 
+        }
+
+        .confirmation {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .confirmation h2 {
+            color: #00796b;
+        }
+
+        .confirmation p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        a {
+            background-color: #ff7043; 
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        button:hover {
+            background-color: #f4511e; 
+        }
+
+        footer {
+            background-color: #004d40; 
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            button {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Island Booking Confirmed!</h1>
+    </header>
+
+    <div class="confirmation">
+        <h2>Booking Confirmation</h2>
+        <p>Thank you for booking your tropical getaway with us! Here’s your booking summary:</p>
+        <p><strong>Destination:</strong> <span id="confirmedDestination">[Destination]</span></p>
+        <p><strong>Booking Date:</strong> <span id="confirmedDate">[Date]</span></p>
+        <p><strong>Number of Guests:</strong> <span id="confirmedGuests">[Number of Guests]</span></p>
+        <p><strong>Total Budget:</strong> $<span id="confirmedTotal">[Total]</span></p>
+
+        <a href="home .html">home page</a>
+        <a href="payment.html">proceed to pay</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Island Escapes. All rights reserved.</p>
+    </footer>
+
+    <script>
+        
+        const destination = localStorage.getItem('destination') || 'Tropical Island'; 
+        const date = localStorage.getItem('date') || 'Not specified';
+        const guests = localStorage.getItem('guests') || 1;
+        const totalBudget = guests * 10000; 
+
+        
+        document.getElementById('confirmedDestination').innerText = destination;
+        document.getElementById('confirmedDate').innerText = date;
+        document.getElementById('confirmedGuests').innerText = guests;
+        document.getElementById('confirmedTotal').innerText = totalBudget;
+    </script>
+</body>
+</html>

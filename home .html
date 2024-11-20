@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISLANDS</title>
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white; 
+            color: green; 
+        }
+
+        header {
+            background: linear-gradient(135deg, rgb(255, 0, 68),green); 
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px black;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-family: 'Pacifico', cursive; 
+            font-size: 2.5rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            font-size: 1.1rem;
+            transition: background 0.3s, border-radius 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: red;
+            border-radius: 5px;
+        }
+
+        .banner {
+            background-image: url('tropical-beach.jpg'); 
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .banner h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+            font-family: 'Pacifico', cursive;
+        }
+
+        .search-bar {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .search-bar input,
+        .search-bar button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid green;
+        }
+
+        .search-bar input {
+            width: 180px;
+            background-color: white;
+            color: green;
+        }
+
+        .search-bar button {
+            background-color: lightcoral; 
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: lightcoral; 
+        }
+
+        .featured-destinations {
+            padding: 2rem;
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-destinations h2 {
+            margin-bottom: 1rem;
+            color:green;
+            font-size: 2rem;
+        }
+
+        .destinations {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .destination {
+            margin: 10px;
+            text-align: center;
+            flex: 1 1 calc(25% - 20px);
+            max-width: calc(25% - 20px);
+            transition: transform 0.3s;
+        }
+
+        .destination:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .destination img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: green; 
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer a {
+            color: lightcoral; 
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        
+        @media (max-width: 768px) {
+            .destination {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .destination {
+                flex: 1 1 calc(100% - 20px);
+                max-width: calc(100% - 20px);
+            }
+        }
+        
+    </style>
+
+
+</head>
+<body>
+    <header>
+        <h1>ISLAND ESCAPES</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="banner">
+        <h1>ISLAND ESCAPES</h1>
+    </div>
+
+    <div class="search-bar">
+        <input type="search" id="search-input" placeholder="Search tropical destinations...">
+        <button id="search-btn">Search</button>
+    </div>
+
+    <section class="featured-destinations">
+        <h2>Featured Island Destinations</h2>
+        <div class="destinations" id="destinationList">
+            <div class="destination">
+                <img src="bali.jpg" alt="bali">
+                <h3><a href="booking.html">BALI</a></h3>
+            </div>
+            <div class="destination">
+                <img src="LAKSADEEP ISLAND.jpg" alt="LAKSADEEP">
+                <h3><a href="booking.html">LAKSADEEP ISLAND</a></h3>
+            </div>
+            <div class="destination">
+                <img src="amdaman.jpg" alt="Andaman Islands">
+                <h3><a href="booking.html">ANDAMAN</a></h3>
+            </div>
+            <div class="destination">
+                <img src="maldives.jpg" alt="Maldives">
+                <h3><a href="booking.html">MALDIVES</a></h3>
+            </div>
+            <div class="destination">
+                <img src="SANTORINI.jpg" alt="SANTORINI">
+                <h3><a href="booking.html">SANTORINI</a></h3>
+            </div>
+            <div class="destination">
+                <img src="PALAWAN.jpg" alt="PALAWAN">
+                <h3><a href="booking.html">PALAWAN</a></h3>
+            </div>
+            <div class="destination">
+                <img src="MAUI.jpg" alt="MAUI">
+                <h3><a href="booking.html">MAUI</a></h3>
+            </div>
+            <div class="destination">
+                <img src="FIJI.jpg" alt="FIJI">
+                <h3><a href="booking.html">FIJI</a></h3>
+            </div>
+            <div class="destination">
+                <img src="KOH SAMUI.jpg" alt="KOH">
+                <h3><a href="booking.html">KOH SAMUI</a></h3>
+            </div>
+            <div class="destination">
+                <img src="TAHITI.jpg" alt="TAHITI">
+                <h3><a href="booking.html">TAHITI</a></h3>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 ISLAND ESCAPES</p>
+        <a href="#">Terms and Conditions</a>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const searchBtn = document.getElementById('search-btn');
+        const destinations = document.querySelectorAll('.destination');
+
+        searchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const searchTerm = searchInput.value.trim().toLowerCase();
+
+            destinations.forEach((destination) => {
+                const destinationName = destination.querySelector('h3 a').textContent.trim().toLowerCase();
+                if (destinationName.includes(searchTerm)) {
+                    destination.style.display = 'block';
+                } else {
+                    destination.style.display = 'none';
+                }
+            });
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                searchBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>

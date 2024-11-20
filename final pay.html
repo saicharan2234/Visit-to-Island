@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Payment - Island Getaway</title>
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #e0f7fa; 
+            color: #004d40; 
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #009688; 
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            font-family: 'Pacifico', cursive; 
+        }
+
+        .payment-section {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .payment-section h2 {
+            color: #00796b;
+        }
+
+        .payment-summary p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .payment-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 1rem;
+        }
+
+        .payment-form input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        a{
+            background-color: #ff7043; /* Coral color */
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .payment-form button:hover {
+            background-color: #f4511e; /* Darker coral */
+        }
+
+        .confirmation-message {
+            margin-top: 30px;
+            font-size: 1.3rem;
+            color: #00796b;
+        }
+
+        footer {
+            background-color: #004d40; /* Deep green */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .payment-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Island Getaway Payment</h1>
+    </header>
+
+    <div class="payment-section">
+        <h2>Your Booking Summary</h2>
+        <div class="payment-summary">
+            <p><strong>Destination:</strong> <span id="paymentDestination">[Destination]</span></p>
+            <p><strong>Booking Date:</strong> <span id="paymentDate">[Date]</span></p>
+            <p><strong>Number of Guests:</strong> <span id="paymentGuests">[Guests]</span></p>
+            <p><strong>Total Budget:</strong> $<span id="paymentTotal">[Total]</span></p>
+        </div>
+
+        <h3>Enter Your Payment Details</h3>
+        <div class="payment-form">
+            
+            <label for="cardNumber">Credit Card Number</label>
+            <input type="text" id="cardNumber" placeholder="Enter your card number" required>
+
+            <label for="expiryDate">Expiry Date</label>
+            <input type="month" id="expiryDate" required>
+
+            <label for="cvv">CVV</label>
+            <input type="number" id="cvv" placeholder="Enter your CVV" required>
+
+            <a href="payment sucessfull.html">pay now</a>
+        </div>
+
+        <div class="confirmation-message" id="confirmationMessage" style="display:none;">
+            <p>Thank you for your payment! Your booking is now confirmed.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Island Escapes. All rights reserved.</p>
+    </footer>
+
+    <script>
+        
+        const destination = localStorage.getItem('destination') || 'Tropical Island';
+        const date = localStorage.getItem('date') || 'Not specified';
+        const guests = localStorage.getItem('guests') || 1;
+        const totalBudget = guests * 10000; 
+
+        
+        document.getElementById('paymentDestination').innerText = destination;
+        document.getElementById('paymentDate').innerText = date;
+        document.getElementById('paymentGuests').innerText = guests;
+        document.getElementById('paymentTotal').innerText = totalBudget;
+
+       
+        document.getElementById('payButton').addEventListener('click', function(event) {
+            event.preventDefault();
+
+           
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const cvv = document.getElementById('cvv').value;
+
+            if (!cardNumber || !expiryDate || !cvv) {
+                alert('Please fill out all payment fields.');
+                return;
+            }
+
+            
+            document.getElementById('confirmationMessage').style.display = 'block';
+            document.querySelector('.payment-form').style.display = 'none';
+
+            
+            setTimeout(function() {
+                window.location.href = 'thankyou.html';  
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
